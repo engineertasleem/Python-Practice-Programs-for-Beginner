@@ -1,0 +1,267 @@
+1. Implement a Simple Class Hierarchy (OOP)
+Create a base class called Animal, then create two subclasses, Dog and Cat, that inherit from Animal and override a method to make a sound.
+
+python
+Copy
+class Animal:
+    def __init__(self, name):
+        self.name = name
+
+    def sound(self):
+        raise NotImplementedError("Subclass must implement abstract method")
+
+class Dog(Animal):
+    def sound(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def sound(self):
+        return "Meow!"
+
+dog = Dog("Rex")
+cat = Cat("Whiskers")
+
+print(f"{dog.name} says: {dog.sound()}")
+print(f"{cat.name} says: {cat.sound()}")
+
+
+2. Implement a Simple Bank System (OOP)
+Create a BankAccount class with methods to deposit, withdraw, and check the balance. Use object-oriented principles.
+
+class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.balance += amount
+            print(f"Deposited {amount}. New balance: {self.balance}")
+        else:
+            print("Deposit amount must be positive.")
+
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.balance:
+            self.balance -= amount
+            print(f"Withdrew {amount}. New balance: {self.balance}")
+        else:
+            print("Invalid withdrawal amount.")
+
+    def check_balance(self):
+        print(f"Current balance: {self.balance}")
+
+account = BankAccount("Alice", 1000)
+account.deposit(500)
+account.withdraw(200)
+account.check_balance()
+
+
+3. Implement a Queue Using Two Stacks
+Implement a queue using two stacks (push_stack and pop_stack).
+
+class QueueUsingStacks:
+    def __init__(self):
+        self.push_stack = []
+        self.pop_stack = []
+
+    def enqueue(self, item):
+        self.push_stack.append(item)
+
+    def dequeue(self):
+        if not self.pop_stack:
+            if not self.push_stack:
+                print("Queue is empty!")
+                return None
+            else:
+                while self.push_stack:
+                    self.pop_stack.append(self.push_stack.pop())
+        return self.pop_stack.pop()
+
+q = QueueUsingStacks()
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+print(q.dequeue())  # Output: 1
+print(q.dequeue())  # Output: 2
+
+
+4. Tic-Tac-Toe Game (Text-based)
+Create a simple 3x3 Tic-Tac-Toe game where two players can play against each other. Use a loop to check for valid moves and determine if a player has won.
+
+def print_board(board):
+    for row in board:
+        print(" | ".join(row))
+        print("-" * 5)
+
+def check_winner(board, player):
+    for row in board:
+        if all([cell == player for cell in row]):
+            return True
+    for col in range(3):
+        if all([board[row][col] == player for row in range(3)]):
+            return True
+    if all([board[i][i] == player for i in range(3)]) or all([board[i][2 - i] == player for i in range(3)]):
+        return True
+    return False
+
+def is_full(board):
+    return all([cell != ' ' for row in board for cell in row])
+
+def play_game():
+    board = [[' ' for _ in range(3)] for _ in range(3)]
+    current_player = 'X'
+
+    while True:
+        print_board(board)
+        row, col = map(int, input(f"Player {current_player}, enter row and column (0-2): ").split())
+        if board[row][col] != ' ':
+            print("Cell is already taken. Try again.")
+            continue
+        board[row][col] = current_player
+        if check_winner(board, current_player):
+            print_board(board)
+            print(f"Player {current_player} wins!")
+            break
+        if is_full(board):
+            print_board(board)
+            print("It's a draw!")
+            break
+        current_player = 'O' if current_player == 'X' else 'X'
+
+play_game()
+
+
+5. Implement Merge Sort Algorithm
+Implement the merge sort algorithm, a classic divide-and-conquer algorithm to sort a list of numbers.
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    mid = len(arr) // 2
+    left = merge_sort(arr[:mid])
+    right = merge_sort(arr[mid:])
+    return merge(left, right)
+
+def merge(left, right):
+    result = []
+    i = j = 0
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+    result.extend(left[i:])
+    result.extend(right[j:])
+    return result
+
+nums = [38, 27, 43, 3, 9, 82, 10]
+print("Sorted Array:", merge_sort(nums))
+
+
+6. Find Shortest Path in a Maze (Breadth-First Search)
+Implement a breadth-first search (BFS) algorithm to find the shortest path in a 2D maze from a start point to a goal.
+
+from collections import deque
+
+def bfs(maze, start, goal):
+    rows, cols = len(maze), len(maze[0])
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    queue = deque([(start, [start])])
+    visited = set([start])
+
+    while queue:
+        (x, y), path = queue.popleft()
+
+        if (x, y) == goal:
+            return path
+
+        for dx, dy in directions:
+            nx, ny = x + dx, y + dy
+            if 0 <= nx < rows and 0 <= ny < cols and maze[nx][ny] == 0 and (nx, ny) not in visited:
+                visited.add((nx, ny))
+                queue.append(((nx, ny), path + [(nx, ny)]))
+    return None
+
+maze = [
+    [0, 1, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0],
+    [1, 1, 0, 0, 0],
+    [0, 0, 0, 1, 0]
+]
+start = (0, 0)
+goal = (4, 4)
+path = bfs(maze, start, goal)
+if path:
+    print(f"Shortest path: {path}")
+else:
+    print("No path found")
+
+
+7. Create a Simple HTTP Server (Using http.server)
+Create a simple HTTP server that serves static content.
+
+from http.server import SimpleHTTPRequestHandler, HTTPServer
+
+class MyHandler(SimpleHTTPRequestHandler):
+    def do_GET(self):
+        if self.path == '/':
+            self.path = '/index.html'
+        return super().do_GET()
+
+def run(server_class=HTTPServer, handler_class=MyHandler):
+    server_address = ('', 8000)
+    httpd = server_class(server_address, handler_class)
+    print("Starting server on http://localhost:8000")
+    httpd.serve_forever()
+
+run()
+
+
+8. Create a Simple Chat Application (Using socket)
+Build a basic client-server chat application using sockets.
+
+# Server
+import socket
+
+def start_server():
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('localhost', 65432))
+    server_socket.listen()
+
+    print("Server listening on port 65432...")
+    conn, addr = server_socket.accept()
+    print(f"Connected by {addr}")
+    
+    while True:
+        message = conn.recv(1024).decode()
+        if message == 'quit':
+            break
+        print(f"Client: {message}")
+        conn.sendall(input("Server: ").encode())
+    
+    conn.close()
+
+if __name__ == '__main__':
+    start_server()
+
+
+9. Create a LRU (Least Recently Used) Cache
+Implement an LRU cache using a combination of a dictionary and a doubly linked list for efficient access and eviction.
+
+class Node:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.prev = None
+        self.next = None
+
+class LRUCache:
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        self.cache = {}
+        self
+
+
