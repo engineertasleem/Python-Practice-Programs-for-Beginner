@@ -1,0 +1,186 @@
+1. Hello, World!
+Print the message “Hello, World!” to the console.
+
+print("Hello, World!")
+
+2. Simple Calculator
+Create a basic calculator that can perform addition, subtraction, multiplication, and division.
+
+def add(x, y):
+    return x + y
+
+def subtract(x, y):
+    return x - y
+
+def multiply(x, y):
+    return x * y
+
+def divide(x, y):
+    return x / y
+
+print("Select operation:")
+print("1. Add")
+print("2. Subtract")
+print("3. Multiply")
+print("4. Divide")
+
+choice = input("Enter choice(1/2/3/4): ")
+
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+if choice == '1':
+    print(f"{num1} + {num2} = {add(num1, num2)}")
+elif choice == '2':
+    print(f"{num1} - {num2} = {subtract(num1, num2)}")
+elif choice == '3':
+    print(f"{num1} * {num2} = {multiply(num1, num2)}")
+elif choice == '4':
+    if num2 != 0:
+        print(f"{num1} / {num2} = {divide(num1, num2)}")
+    else:
+        print("Error! Division by zero.")
+else:
+    print("Invalid Input")
+
+3. Even or Odd Number
+Check if a number is even or odd.
+
+num = int(input("Enter a number: "))
+
+if num % 2 == 0:
+    print(f"{num} is even")
+else:
+    print(f"{num} is odd")
+
+4. Prime Number Checker
+Check if a number is prime.
+
+num = int(input("Enter a number: "))
+if num > 1:
+    for i in range(2, num):
+        if num % i == 0:
+            print(f"{num} is not a prime number")
+            break
+    else:
+        print(f"{num} is a prime number")
+else:
+    print(f"{num} is not a prime number")
+
+5. Fibonacci Sequence
+Generate the Fibonacci sequence up to a certain number.
+
+n_terms = int(input("How many terms in the Fibonacci sequence would you like to generate? "))
+
+a, b = 0, 1
+count = 0
+
+if n_terms <= 0:
+    print("Please enter a positive integer")
+elif n_terms == 1:
+    print(f"Fibonacci sequence up to {n_terms}: {a}")
+else:
+    print("Fibonacci sequence:")
+    while count < n_terms:
+        print(a)
+        nth = a + b
+        a = b
+        b = nth
+        count += 1
+
+6. Palindrome Checker
+Check if a string is a palindrome (reads the same forwards and backwards).
+
+def is_palindrome(word):
+    return word == word[::-1]
+
+word = input("Enter a word: ")
+
+if is_palindrome(word):
+    print(f"{word} is a palindrome.")
+else:
+    print(f"{word} is not a palindrome.")
+
+7. Count Vowels in a String
+Count the number of vowels in a given string.
+
+def count_vowels(string):
+    vowels = "aeiou"
+    count = 0
+    for char in string:
+        if char.lower() in vowels:
+            count += 1
+    return count
+
+string = input("Enter a string: ")
+print(f"Number of vowels: {count_vowels(string)}")
+
+8. Factorial of a Number
+Find the factorial of a number using a loop.
+
+num = int(input("Enter a number: "))
+factorial = 1
+
+if num < 0:
+    print("Factorial does not exist for negative numbers.")
+else:
+    for i in range(1, num + 1):
+        factorial *= i
+    print(f"Factorial of {num} is {factorial}")
+
+9. Multiplication Table
+Print the multiplication table of a given number.
+
+num = int(input("Enter a number: "))
+for i in range(1, 11):
+    print(f"{num} x {i} = {num * i}")
+
+10. Sum of Digits of a Number
+Find the sum of digits in a given number.
+
+num = input("Enter a number: ")
+sum_digits = sum(int(digit) for digit in num)
+print(f"The sum of digits of {num} is {sum_digits}")
+
+11. Armstrong Number
+Check if a number is an Armstrong number (sum of its digits raised to the power of the number of digits equals the number itself).
+
+num = int(input("Enter a number: "))
+num_str = str(num)
+num_digits = len(num_str)
+
+sum_of_powers = sum(int(digit) ** num_digits for digit in num_str)
+
+if sum_of_powers == num:
+    print(f"{num} is an Armstrong number.")
+else:
+    print(f"{num} is not an Armstrong number.")
+
+12. Count Occurrences of an Element in a List
+Count how many times a specific element appears in a list.
+
+my_list = [1, 2, 3, 1, 2, 1, 4, 5]
+element = int(input("Enter the element to count: "))
+count = my_list.count(element)
+print(f"The element {element} appears {count} times in the list.")
+
+13. Reverse a String
+Reverse the characters in a string.
+
+string = input("Enter a string: ")
+reversed_string = string[::-1]
+print(f"Reversed string: {reversed_string}")
+
+14. Find Largest Element in a List
+Find the largest element in a list.
+
+numbers = [3, 5, 7, 2, 8, 6]
+print(f"Largest number in the list is: {max(numbers)}")
+
+15. Sum of Natural Numbers
+Find the sum of the first n natural numbers.
+
+n = int(input("Enter a number: "))
+sum_natural_numbers = sum(range(1, n+1))
+print(f"The sum of first {n} natural numbers is {sum_natural_numbers}")
+
