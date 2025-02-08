@@ -1,0 +1,204 @@
+1. What is Python?
+Python is a high-level, easy-to-read programming language used for:
+
+Web development
+Data analysis
+Artificial Intelligence
+Automation
+Game development
+And much more!
+
+2. How to Write Python Code
+Python code is written in .py files.
+
+You can run Python code using an IDE (like PyCharm, VS Code) or directly in the terminal.
+
+3. Basic Syntax
+Python uses indentation (spaces or tabs) to define blocks of code.
+No semicolons (;) are needed at the end of lines.
+
+Example:
+
+print("Hello, World!")
+
+4. Variables
+Variables are used to store data.
+You don’t need to declare the type of variable (Python is dynamically typed).
+
+Example:
+
+name = "Alice"
+age = 25
+height = 5.6
+
+5. Data Types
+Python has several built-in data types:
+
+Integers: Whole numbers (10, -5)
+Floats: Decimal numbers (3.14, -0.5)
+Strings: Text ("Hello", 'Python')
+Booleans: True or False
+Lists: Ordered, changeable collections ([1, 2, 3])
+Tuples: Ordered, unchangeable collections ((1, 2, 3))
+Dictionaries: Key-value pairs ({"name": "Alice", "age": 25})
+
+6. Input and Output
+Input: Use input() to get user input.
+Output: Use print() to display output.
+
+Example:
+
+name = input("Enter your name: ")
+print("Hello,", name)
+
+7. Operators
+Arithmetic: +, -, *, /, % (modulus), ** (exponent)
+
+Comparison: ==, !=, >, <, >=, <=
+Logical: and, or, not
+
+Example:
+
+x = 10
+y = 5
+print(x + y)  # Output: 15
+print(x > y)  # Output: True
+
+8. Conditional Statements
+Use if, elif, and else to make decisions.
+
+Example:
+
+age = 18
+if age >= 18:
+    print("You are an adult.")
+else:
+    print("You are a minor.")
+
+9. Loops
+For Loop: Iterates over a sequence (like a list or range).
+While Loop: Repeats as long as a condition is true.
+
+Example:
+
+# For Loop
+for i in range(5):
+    print(i)  # Output: 0 1 2 3 4
+
+# While Loop
+count = 0
+while count < 3:
+    print("Hello")
+    count += 1
+
+10. Functions
+Functions are reusable blocks of code.
+Use def to define a function.
+
+Example:
+
+def greet(name):
+    print("Hello,", name)
+
+greet("Alice")  # Output: Hello, Alice
+11. Lists
+Lists are ordered and changeable collections.
+
+Example:
+
+fruits = ["apple", "banana", "cherry"]
+print(fruits[0])  # Output: apple
+fruits.append("orange")  # Add an item
+12. Dictionaries
+Dictionaries store data in key-value pairs.
+
+Example:
+
+person = {"name": "Alice", "age": 25}
+print(person["name"])  # Output: Alice
+person["age"] = 26  # Update value
+13. Error Handling
+Use try and except to handle errors.
+
+Example:
+
+try:
+    num = int(input("Enter a number: "))
+    print(10 / num)
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+except ValueError:
+    print("Invalid input!")
+
+14. File Handling
+Read from and write to files.
+
+Example:
+
+# Writing to a file
+with open("file.txt", "w") as file:
+    file.write("Hello, Python!")
+
+# Reading from a file
+with open("file.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+15. Modules and Libraries
+Python has many built-in modules and libraries.
+Use import to include them.
+
+Example:
+
+import math
+print(math.sqrt(16))  # Output: 4.0
+16. Classes and Objects
+Python is an object-oriented language.
+Use class to define a class.
+
+Example:
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def bark(self):
+        print("Woof!")
+
+my_dog = Dog("Buddy")
+my_dog.bark()  # Output: Woof!
+17. Comments
+Use # for single-line comments.
+
+Use """ for multi-line comments.
+
+Example:
+
+# This is a single-line comment
+
+"""
+This is a
+multi-line comment
+"""
+
+18. Indentation
+Python uses indentation to define code blocks.
+Always use consistent indentation (4 spaces recommended).
+
+Example:
+
+if 5 > 2:
+    print("Five is greater than two!")
+
+19. Practice
+The best way to learn Python is by practicing! Try small projects like:
+
+A calculator
+A to-do list app
+A number guessing game
+
+That's it! These are the basics of Python. Once you're comfortable with these, you can explore more advanced topics like:
+Working with APIs
+Data analysis with Pandas
+Web development with Flask/Django
+Machine learning with TensorFlow/PyTorch
